@@ -1,30 +1,20 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Rictionary
 
-## Getting Started
+Rictionary is a tool to help you spell out words and phrases over the phone or aloud so the other person can better understand you.
 
-First, run the development server:
+## Inspiration
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+I once overheard a coworker giving instructions for resetting their password over the phone. The coworker tried to spell it out using what I thought were confusing words like "L as in 'Lollipop'" and "C as in 'Chair'". I thought to myself, "There must be a better way."
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Examples
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+### Spelling a word
+As you type, the selected Rictionary will be used to spell out the given phrase.
 
-## Learn More
+![Spelling a word](./examples/spelling.gif)
 
-To learn more about Next.js, take a look at the following resources:
+### Listing all Rictionary words
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+You can view all the words in a given Rictionary at once on the List tab. Each entry also contains a link to search the value on Google, in case you're not already familiar with the term.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+![Listing all words](./examples/list.png)
