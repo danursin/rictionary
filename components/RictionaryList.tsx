@@ -38,7 +38,7 @@ const iterableProps: Array<keyof Rictionary> = [
 
 const RictionaryList: React.FC<RictionaryListProps> = ({ rictionary }) => {
     return (
-        <Table striped celled>
+        <Table striped celled unstackable>
             <Table.Body>
                 {iterableProps.map((prop) => {
                     const value = rictionary[prop] as string;
