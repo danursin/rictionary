@@ -10,22 +10,20 @@
         "lint:fix": "eslint . --ext .ts,.tsx --fix"
     },
     "dependencies": {
+        "knex": "^0.21.12",
         "mssql": "^6.2.3",
         "next": "10.0.3",
         "react": "17.0.1",
         "react-dom": "17.0.1",
+        "react-swipeable-views": "^0.13.9",
         "semantic-ui-css": "^2.4.1",
-        "semantic-ui-react": "^2.0.1",
-        "typeorm": "^0.2.29"
+        "semantic-ui-react": "^2.0.1"
     },
     "devDependencies": {
-        "@babel/core": "^7.12.9",
-        "@babel/plugin-proposal-decorators": "^7.12.1",
         "@types/node": "^14.14.10",
         "@types/react": "^17.0.0",
         "@typescript-eslint/eslint-plugin": "^4.9.0",
         "@typescript-eslint/parser": "^4.9.0",
-        "babel-eslint": "^10.0.0",
         "eslint": "^7.5.0",
         "eslint-config-prettier": "^6.15.0",
         "eslint-config-react-app": "^6.0.0",

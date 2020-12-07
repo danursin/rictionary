@@ -1,4 +1,4 @@
-import { Grid, Menu } from "semantic-ui-react";
+import { Grid, Header, Menu } from "semantic-ui-react";
 
 import Head from "next/head";
 import { ReactNode } from "react";
@@ -15,10 +15,12 @@ const Layout: React.FC<LayoutProps> = ({ title = "Rictionary", children }) => {
                 <title>{title}</title>
             </Head>
             <Menu fluid tabular>
-                <Menu.Item content="Rictionary" position="left" />
+                <Menu.Item content={<Header content="Rictionary" color="blue" icon="sort alphabet down" />} position="left" />
             </Menu>
-            <Grid padded="horizontally">
-                <Grid.Column>{children}</Grid.Column>
+            <Grid padded="horizontally" centered>
+                <Grid.Column largeScreen={8} tablet={12} mobile={16}>
+                    {children}
+                </Grid.Column>
             </Grid>
         </>
     );

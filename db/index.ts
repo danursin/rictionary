@@ -1,25 +1,17 @@
-import { Connection, createConnection, getConnectionManager } from "typeorm";
+import knex from "knex";
 
-import { Rictionary } from "./entities/Rictionary";
-
-export const getDbConnection = async (): Promise<Connection> => {
-    const mgr = getConnectionManager();
-    if (mgr.has("default")) {
-        return mgr.get();
-    }
-
-    const { DB_HOST: host, DB_CATALOG: database, DB_USERNAME: username, DB_PASSWORD: password } = process.env;
-    return createConnection({
-        type: "mssql",
-        host,
-        database,
-        username,
-        password,
-        logging: ["query", "error"],
-        entities: [Rictionary],
-        synchronize: false,
-        options: {
-            enableArithAbort: true
+export const getKnex = (): knex => {
+    const { DB_HOST: host, DB_CATALOG: database, DB_USERNAME: user, DB_PASSWORD: password } = process.env;
+    return knex({
+        client: "mssql",
+        connection: {
+            host,
+            database,
+            user,
+            password,
+            options: {
+                enableArithAbort: true
+            }
         }
     });
 };
