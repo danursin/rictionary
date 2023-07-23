@@ -1,22 +1,26 @@
-import { Input, List } from "semantic-ui-react";
+import { Input, List, Placeholder } from "semantic-ui-react";
 import React, { useEffect, useState } from "react";
 
-import { Rictionary } from "../types";
+import { RictionaryItem } from "../types";
 
 interface WordSpellingProps {
-    rictionary: Rictionary;
+    rictionary?: RictionaryItem | undefined;
 }
 const WordSpelling: React.FC<WordSpellingProps> = ({ rictionary }) => {
     const [word, setWord] = useState<string>("");
     const [spelling, setSpelling] = useState<JSX.Element[]>([]);
 
     useEffect(() => {
+        if (!rictionary) {
+            return;
+        }
+
         const letters = word.split("");
         const newSpelling: JSX.Element[] = [];
         for (const letter of letters) {
             if (/[a-zA-Z]/.test(letter)) {
-                const upperCase = letter.toUpperCase();
-                const value = rictionary[`${upperCase}Value`] as string;
+                const upperCase = letter.toLowerCase();
+                const value = rictionary[upperCase] as string;
                 newSpelling.push(
                     <>
                         <b>{upperCase}</b> as in {value}
@@ -40,6 +44,25 @@ const WordSpelling: React.FC<WordSpellingProps> = ({ rictionary }) => {
         }
         setSpelling(newSpelling);
     }, [rictionary, word]);
+
+    if (!rictionary) {
+        return (
+            <Placeholder>
+                <Placeholder.Paragraph>
+                    <Placeholder.Line />
+                    <Placeholder.Line />
+                    <Placeholder.Line />
+                    <Placeholder.Line />
+                    <Placeholder.Line />
+                </Placeholder.Paragraph>
+                <Placeholder.Paragraph>
+                    <Placeholder.Line />
+                    <Placeholder.Line />
+                    <Placeholder.Line />
+                </Placeholder.Paragraph>
+            </Placeholder>
+        );
+    }
 
     return (
         <>
