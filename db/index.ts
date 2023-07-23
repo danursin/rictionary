@@ -1,17 +1,16 @@
-import knex from "knex";
+import { DynamoDBDocumentClient, PutCommand } from "@aws-sdk/lib-dynamodb";
 
-export const getKnex = (): knex => {
-    const { DB_HOST: host, DB_CATALOG: database, DB_USERNAME: user, DB_PASSWORD: password } = process.env;
-    return knex({
-        client: "mssql",
-        connection: {
-            host,
-            database,
-            user,
-            password,
-            options: {
-                enableArithAbort: true
-            }
-        }
-    });
-};
+import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
+
+const client = new DynamoDBClient({
+    credentials: {
+        accessKeyId: process.env.AWS_ACCESS_KEY_ID as string,
+        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY as string
+    }
+});
+
+const dynamodb = DynamoDBDocumentClient.from(client);
+
+export default dynamodb;
+
+

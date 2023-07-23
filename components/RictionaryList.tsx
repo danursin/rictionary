@@ -1,42 +1,60 @@
-import { Header, Icon, Table } from "semantic-ui-react";
+import { Header, Icon, Placeholder, Table } from "semantic-ui-react";
 
 import React from "react";
-import { Rictionary } from "../types";
+import { RictionaryItem } from "../types";
 
 interface RictionaryListProps {
-    rictionary: Rictionary;
+    rictionary?: RictionaryItem | undefined;
 }
 
-const iterableProps: Array<keyof Rictionary> = [
-    "AValue",
-    "BValue",
-    "CValue",
-    "DValue",
-    "EValue",
-    "FValue",
-    "GValue",
-    "HValue",
-    "IValue",
-    "JValue",
-    "KValue",
-    "LValue",
-    "MValue",
-    "NValue",
-    "OValue",
-    "PValue",
-    "QValue",
-    "RValue",
-    "SValue",
-    "TValue",
-    "UValue",
-    "VValue",
-    "WValue",
-    "XValue",
-    "YValue",
-    "ZValue"
+const iterableProps: string[] = [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o",
+    "p",
+    "q",
+    "r",
+    "s",
+    "t",
+    "u",
+    "v",
+    "w",
+    "x",
+    "y",
+    "z"
 ];
 
 const RictionaryList: React.FC<RictionaryListProps> = ({ rictionary }) => {
+    if (!rictionary) {
+        return (
+            <Placeholder>
+                <Placeholder.Paragraph>
+                    <Placeholder.Line />
+                    <Placeholder.Line />
+                    <Placeholder.Line />
+                    <Placeholder.Line />
+                    <Placeholder.Line />
+                </Placeholder.Paragraph>
+                <Placeholder.Paragraph>
+                    <Placeholder.Line />
+                    <Placeholder.Line />
+                    <Placeholder.Line />
+                </Placeholder.Paragraph>
+            </Placeholder>
+        );
+    }
     return (
         <Table striped celled unstackable>
             <Table.Body>
@@ -44,7 +62,7 @@ const RictionaryList: React.FC<RictionaryListProps> = ({ rictionary }) => {
                     const value = rictionary[prop] as string;
                     return (
                         <Table.Row key={prop} textAlign="center">
-                            <Table.Cell width="1" content={<Header content={(prop as string).substr(0, 1)} color="blue" />} />
+                            <Table.Cell width="1" content={<Header content={prop.toUpperCase()} color="blue" />} />
                             <Table.Cell width="14" textAlign="left" content={value} />
                             <Table.Cell width="1">
                                 <a
