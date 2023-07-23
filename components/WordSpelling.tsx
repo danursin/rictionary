@@ -19,11 +19,10 @@ const WordSpelling: React.FC<WordSpellingProps> = ({ rictionary }) => {
         const newSpelling: JSX.Element[] = [];
         for (const letter of letters) {
             if (/[a-zA-Z]/.test(letter)) {
-                const upperCase = letter.toLowerCase();
-                const value = rictionary[upperCase] as string;
+                const value = rictionary[letter.toLowerCase()] as string;
                 newSpelling.push(
                     <>
-                        <b>{upperCase}</b> as in {value}
+                        <b>{letter}</b> as in {value}
                     </>
                 );
             } else if (/[0-9]/.test(letter)) {
